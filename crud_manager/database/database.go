@@ -14,7 +14,7 @@ type MongoDBConnection struct {
 
 // NewMongoDBConnection creates a new MongoDBConnection instance.
 func NewMongoDBConnection(ctx context.Context, collection string) (*mongo.Collection, error) {
-	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/")
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/mecnave")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
 		return nil, err

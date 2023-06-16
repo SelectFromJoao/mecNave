@@ -13,10 +13,9 @@ import (
 
 func GetUserByID(ctx *fiber.Ctx) error {
 
-	id, _ := ctx.ParamsInt("id", 0)
+	id := ctx.Params("id", "0")
 
 	user, err := repository.GetOne(id)
-
 	if err != nil {
 		return ctx.Status(http.StatusNotFound).JSON(models.ResponseModel{
 			StatusCode: 404,
@@ -26,7 +25,7 @@ func GetUserByID(ctx *fiber.Ctx) error {
 		})
 	}
 
-	if user.ID == 0 {
+	if user.Id == 0 {
 		return ctx.Status(http.StatusNotFound).JSON(models.ResponseModel{
 			StatusCode: 404,
 			Message:    "User not found",
@@ -117,7 +116,7 @@ func Update(ctx *fiber.Ctx) error {
 		})
 	}
 
-	user, err := repository.GetOne(userModel.ID)
+	user, err := repository.GetOne(userModel.Id)
 	if err != nil {
 		return ctx.Status(http.StatusInternalServerError).JSON(models.ResponseModel{
 			StatusCode: 500,
@@ -178,7 +177,7 @@ func Delete(ctx *fiber.Ctx) error {
 		})
 	}
 
-	user, err := repository.GetOne(userModel.ID)
+	user, err := repository.GetOne(userModel.Id)
 	if err != nil {
 		return ctx.Status(http.StatusInternalServerError).JSON(models.ResponseModel{
 			StatusCode: 500,
