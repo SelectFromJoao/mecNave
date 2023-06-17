@@ -15,15 +15,12 @@ const collection = "user"
 
 func GetOne(id interface{}) (models.User, error) {
 	var user models.User
-	//fmt.Println(fmt.Sprint(id))
-	fmt.Println(id)
 	objID, _ := primitive.ObjectIDFromHex(fmt.Sprint(id))
 	collection, err := database.NewMongoDBConnection(context.Background(), collection)
 
 	if err != nil {
 		return user, err
 	}
-	//filter := bson.D{{Key: "_id", Value: objID}}
 
 	err = collection.FindOne(context.Background(), bson.M{"_id": objID}).Decode(&user)
 	if err != nil {

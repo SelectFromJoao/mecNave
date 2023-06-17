@@ -7,7 +7,7 @@ import (
 	"mecnave.com/mod/crud_manager/cmd/routes"
 )
 
-const port = ":8080"
+const port = ":8081"
 
 func StartAPI() {
 
