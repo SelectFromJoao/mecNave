@@ -40,6 +40,7 @@ func SetupCompanyRoutes(v1 fiber.Router) {
 
 func SetupBannersRoutes(v1 fiber.Router) {
 	v1.Get("/banners/:id", GetBannerByID)
+	v1.Get("/banners", GetAllBanners)
 	v1.Post("/banners", CreateBanner)
 	v1.Put("/banners", UpdateComapany)
 	v1.Delete("/banners", DeleteBanner)

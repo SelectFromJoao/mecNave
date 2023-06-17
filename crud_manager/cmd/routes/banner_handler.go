@@ -40,7 +40,7 @@ func GetBannerByID(ctx *fiber.Ctx) error {
 
 func GetAllBanners(ctx *fiber.Ctx) error {
 
-	users, err := repository.GetAllUsers()
+	users, err := repository.GetAllBanners()
 
 	if err != nil {
 		return ctx.Status(http.StatusNotFound).JSON(models.ResponseModel{
